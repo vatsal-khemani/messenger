@@ -5,7 +5,9 @@ import Message from './Message';
 
 function App() {
   const [input,setInput]=useState('');
-  const [messages,setMessages]=useState(['hi','bois']);
+  const [messages,setMessages]=useState([
+    {username: 'Virat',text: 'hello'},
+    {username: 'Aman',text: 'howdy'},]);
   const [username,setUsername]=useState('');
 
   //useState =variable in React
@@ -19,12 +21,12 @@ function App() {
 
   const sendMessage = (event)=> {
     event.preventDefault();
-    setMessages([...messages,input]);
+    setMessages([...messages,{username: username,text: input}]);
     setInput('');
   }
   return (
     <div className="App">
-      <h1>Hello worlVatsald</h1>
+      <h1>Hello world</h1>
   <h2>Welcome {username}</h2>
       <form>
       <FormControl>
@@ -35,7 +37,7 @@ function App() {
       </form>
       {
         messages.map(message => (
-          <Message text={message}/>
+          <Message username={username} message={message}/>
         ))
       }
     </div>
